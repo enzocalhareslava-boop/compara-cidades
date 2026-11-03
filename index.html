@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compara Cidades</title>
+  <meta name="description" content="Compare dois municípios brasileiros lado a lado com dados oficiais do IBGE: população, área, PIB, PIB por habitante e economia.">
+  <meta property="og:title" content="Compara Cidades">
+  <meta property="og:description" content="Duas cidades do Brasil, lado a lado, com dados oficiais do IBGE.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2314213d'/><rect x='7' y='14' width='6' height='11' fill='%2338b2ac'/><rect x='19' y='8' width='6' height='17' fill='%23f28c28'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pagina">
+    <header class="topo">
+      <p class="marca">Compara Cidades</p>
+      <h1>Duas cidades do Brasil, lado a lado.</h1>
+      <p class="sub">Escolha qualquer um dos 5.570 municípios. Os números vêm direto da API pública do IBGE, sem nada digitado à mão.</p>
+    </header>
+
+    <section class="busca" aria-label="Escolha as cidades">
+      <div class="campo a">
+        <label for="busca-a">Primeira cidade</label>
+        <input id="busca-a" type="text" autocomplete="off" spellcheck="false" role="combobox"
+               aria-autocomplete="list" aria-expanded="false" aria-controls="lista-a" placeholder="Digite o nome">
+        <ul id="lista-a" role="listbox" hidden></ul>
+      </div>
+      <button id="trocar" type="button" aria-label="Trocar as cidades de lado" title="Trocar de lado">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="campo b">
+        <label for="busca-b">Segunda cidade</label>
+        <input id="busca-b" type="text" autocomplete="off" spellcheck="false" role="combobox"
+               aria-autocomplete="list" aria-expanded="false" aria-controls="lista-b" placeholder="Digite o nome">
+        <ul id="lista-b" role="listbox" hidden></ul>
+      </div>
+    </section>
+
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <main id="resultado" hidden>
+      <section id="placar" class="placar"></section>
+      <p id="resumo" class="resumo"></p>
+
+      <section class="bloco">
+        <h2>Os números</h2>
+        <div id="tabela" class="tabela"></div>
+      </section>
+
+      <section class="bloco">
+        <h2>Quanto a população cresceu</h2>
+        <p class="nota">Variação acumulada desde o primeiro ano da série. Passe o mouse nos pontos para ver o número de habitantes.</p>
+        <div id="legenda" class="legenda"></div>
+        <div id="grafico" class="grafico"></div>
+      </section>
+
+      <section class="bloco">
+        <h2>De onde vem o dinheiro</h2>
+        <p id="ano-economia" class="nota"></p>
+        <div id="economias" class="economias"></div>
+      </section>
+
+      <div class="acoes">
+        <button id="copiar" type="button">Copiar link desta comparação</button>
+      </div>
+    </main>
+
+    <footer class="rodape">
+      <p>Fonte: IBGE, Censo 2022 (tabela 4714), estimativas de população (tabela 6579) e PIB dos Municípios (tabela 5938).</p>
+      <p>Feito por <a href="https://www.linkedin.com/in/enzo-calhares-lava-a7b8ab39a">Enzo Calhares Lava</a> · <a href="https://github.com/enzocalhareslava-boop/compara-cidades">código no GitHub</a></p>
+    </footer>
+  </div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
